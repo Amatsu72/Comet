@@ -6,6 +6,9 @@ set(OUTPATH ${PROJECT_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE})
 set(LIBPATH ${PROJECT_SOURCE_DIR}/lib)
 set(3RDPATH ${PROJECT_SOURCE_DIR}/engine/3rdParty)
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_definitions(-DDEBUG)
+endif()
 
 find_package(Vulkan REQUIRED)
 

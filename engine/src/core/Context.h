@@ -18,10 +18,12 @@ namespace Comet
         void createInstance();
         void pickupPhysicalDevice();
         void createDevice();
-        
+        void createSurface();
+
         vk::Instance m_instance;
         vk::PhysicalDevice m_physicalDevice;
         vk::Device m_device;
+        vk::SurfaceKHR m_surface;
 
         GLFWwindow *m_windowHandle;
     };
