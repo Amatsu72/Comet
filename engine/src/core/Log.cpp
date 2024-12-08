@@ -17,6 +17,6 @@ namespace Comet
     {
         s_instance = spdlog::stdout_color_mt<spdlog::async_factory>("async_logger");
         s_instance->set_level(spdlog::level::trace);
-        s_instance->set_pattern("%^%H:%M:%S:%e [%p-%t] [%1!L] [%s] - %v%$");
+        s_instance->set_pattern("Comet Engine: %^%H:%M:%S:%e [%p-%t] [%1!L] [%s] - %v%$");
     }
 }
