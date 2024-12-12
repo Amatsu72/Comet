@@ -8,22 +8,34 @@ namespace Comet
     class Swapchain
     {
     public:
-        Swapchain(Context *context);
+        Swapchain(Context *context, uint32_t width, uint32_t height);
         ~Swapchain();
 
-        struct SwapchainInfo
+        struct SurfaceInfo
         {
             vk::Extent2D imageExtent;
+            vk::SurfaceCapabilitiesKHR capabilities;
             uint32_t imageCount;
-            vk::Format format;
+            vk::SurfaceFormatKHR format;
+            vk::PresentModeKHR presentMode;
+        };
+
+        struct Image
+        {
+            vk::Image image;
+            vk::ImageView view;
         };
 
     private:
-        void init();
-        void querySwapchainInfo();
+        void init(uint32_t width, uint32_t height);
+        void querySwapchainInfo(uint32_t width, uint32_t height);
+        void createImages();
 
         Context *m_contextHandle;
-        SwapchainInfo m_swapchainInfo;
+        vk::SurfaceKHR m_surface;
+        SurfaceInfo m_surfaceInfo;
+
+        std::vector<Image> m_images;
         vk::SwapchainKHR m_swapchain;
     };
 }

@@ -23,6 +23,10 @@ namespace Comet
         return VK_TRUE;
     }
 
+    Context::Context(GLFWwindow *window) : m_windowHandle(window)
+    {
+    }
+
     Context::~Context()
     {
         m_instance.destroySurfaceKHR(m_surface);
@@ -39,6 +43,7 @@ namespace Comet
         queryQueueFamilies();
         createDevice();
         getQueues();
+        m_swapchain = std::make_unique<Swapchain>(this, 720, 1080);
     }
 
     void Context::swapBuffers()
